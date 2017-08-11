@@ -436,6 +436,7 @@ label[for=extension_PlayerTag]:after {
 
 .create p {
   text-align: center;
+  display:none;
 }
 
 .divider {
