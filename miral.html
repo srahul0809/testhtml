@@ -1,1076 +1,283 @@
-{
-  "swagger": "2.0",
-  "info": {
-    "version": "v1",
-    "title": "IdentityServiceAPI",
-    "description": "Farah identity service api"
-  },
-  "host": "identityserviceapp.azurewebsites.net",
-  "schemes": [
-    "http"
-  ],
-  "paths": {
-    "/v1/identity/users/{signInname}/": {
-      "patch": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "modifyusers",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "signInname",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/modifyrequest"
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://fe-newdev-ux-scep-8d56-cm.azurewebsites.net/login.html -->
+<html class="no-js" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miral Hero Panel Component</title>
+    <link href="./Miral Hero Panel Component_files/css" rel="stylesheet">  
+    <link href="./Miral Hero Panel Component_files/main.css" rel="stylesheet">
+    <link href="./Miral Hero Panel Component_files/b2b.css" rel="stylesheet">
+    <style>
+        .hero-panel--content{
+            padding-top: 20px;
+            height: 100px;
+            background-color: #4b11ea;
+            background: -webkit-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: -o-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: -moz-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: linear-gradient(90deg, #09ADEB, #540C7A 100%); 
+        }
+        #FeatureListCurveLeft{
+            stop-color: #09ADEB;
+        }
+        #FeatureListCurveRight{
+            stop-color: #540C7A;
+        }
+
+        .hero-panel--title{
+            line-height: 35px;
+        }
+        .w--content .short-title{
+            font-size: 13px;
+        }
+        .hero-panel--list-content{
+            margin-top: -20px;
+        } 
+        .login{
+            width: 40%;
+            margin: 0 auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .login label, .login .intro, .login .divider{
+            display: none;
+        }
+        .login input{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            border-radius: 4px;
+        }
+
+        .entry-item:nth-child(2){
+            display: -webkit-box;      
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+
+            flex-direction: column;
+        }
+        .entry-item:nth-child(2) input{
+            -webkit-box-ordinal-group: 2;
+            -moz-box-ordinal-group: 2;
+            -ms-flex-order: 2;
+            -webkit-order: 2; 
+            order: 2;
+        }
+
+        .entry-item:nth-child(2) .error{
+            -webkit-box-ordinal-group: 1;
+            -moz-box-ordinal-group: 1;
+            -ms-flex-order: 1;
+            -webkit-order: 1; 
+            order: 1;
+        }
+
+        .login button{  
+            display: block;
+            background-color: #ED1652; 
+            border: none;
+            color: white;
+            padding: 10px 42px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight:bold;
+            margin: 30px auto;
+            cursor: pointer;
+            border-radius: 25px;
+            letter-spacing: 1px;
+        }
+        .login button:hover{
+            background-color: #a52ba5;
+        }
+        .login .password-label{
+            -webkit-box-ordinal-group: 3;
+            -moz-box-ordinal-group: 3;
+            -ms-flex-order: 3;
+            -webkit-order: 3; 
+            order: 3;
+        }
+        .login #forgotPassword{
+            display: block;
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #828282;
+            text-decoration: underline;
+            word-spacing: 3px;
+        }
+        .login .create, .login .create a{
+            text-align: center;
+            color: #828282;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .login .create a{
+            text-decoration: underline;
+            padding-left: 2px;
+        }
+        
+        @media only screen and (max-width: 479px) {
+            .login{
+                width: 80%;
             }
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfull"
-          },
-          "400": {
-            "description": "User does not exist / invalid property value/ missing sign in name / invalid tenant id / missing token header/Tenant id missing/Invalid user/Invalid request/No matching user found/Insufficient privileges to complete the operation"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/users": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "findallusers",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/findallusersresponse"
-              }
+            .login #forgotPassword{
+                width: 100%;
+                text-align: center;
             }
-          },
-          "400": {
-            "description": "Invalid domain name in the request url/Access Token missing or malformed"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/users": {
-      "post": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "adduser",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          },
-          {
-            "name": "addrequest",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/adduserrequest"
+
+            .hero-panel--content .short-title{
+                padding-top: 10px;
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfull"
-          },
-          "400": {
-            "description": "Property missing/Another object with the same value for property signInNames already exists. / Invalid domain name in the request url / One or more properties contains invalid values/A password must be specified to create a new user/A sign in must be specified to create a new user/The specified password does not comply with password complexity requirements. Please provide a different password./Invalid value specified for property value of resource 'SignInName\"/Invalid request/Tenant id missing/Error sending email"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/user/{signInName}/changepassword": {
-      "put": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "modifypassword",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "signInName",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          },
-          {
-            "name": "AccessToken",
-            "in": "header",
-            "description": "AccessToken token need to be added into HTTP request header",
-            "type": "string"
-          },
-          {
-            "name": "req",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/modifypasswordrequest"
+            .hero-panel--content .hero-panel--title{
+                line-height: 20px;
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfull"
-          },
-          "400": {
-            "description": "Authorization_RequestDenied / Inavlid User / Invalid new Password / Invalid current passowrd supplied /Missing new or old password/Insufficient privileges to complete the operation/Invalid domain name in the request url/Tenant id missing"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed/Tenant id missing"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/users/{signInName}/": {
-      "delete": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "removeuser",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "signInName",
-            "in": "path",
-            "description": "user signinname",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
+            #container{
+                margin-top: 40px;
             }
-          },         
-          "400": {
-            "description": "Insufficient previlages / User does nt exist or invalid user/Tenant id missing"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request or Authentication_MissingOrMalformed."
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request."
-          },
-          "404": {
-            "description": "Resource  does not exist or one of its queried reference-property objects are not present or Invalid request."
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
         }
-      }
-    },
-    "/v1/identity/groups/{groupname}/user": {
-      "post": {
-        "tags": [
-          "groups"
-        ],
-        "operationId": "addusertogroup",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "groupname",
-            "in": "path",
-            "description": "user groupname",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          },
-          {
-            "name": "req",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/addusertogrouprequest"
+        @media only screen and (min-width: 480px) and (max-width: 767px) {
+            .login{
+                width: 80%;
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfull"
-          },
-          "400": {
-            "description": "Invalid request / Invalid group name  / Invalid or missing signInName/Tenant id missing /User not found"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/users/{signInName}/groups": {
-      "get": {
-        "tags": [
-          "groups"
-        ],
-        "operationId": "findusergroups",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "signInName",
-            "in": "path",
-            "description": "user signinname",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfull",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Group"
-              }
+            .login #forgotPassword{
+                width: 100%;
+                text-align: center;
             }
-          },
-          "400": {
-            "description": "Invalid request / Invalid  group name  / Invalid signInName/User not found"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request/ Authentication_MissingOrMalformed"
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request"
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/users/{signInName}/": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "operationId": "finduser",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "signInName",
-            "in": "path",
-            "description": "user signinname",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "tenantid",
-            "in": "query",
-            "description": "Tenant Id should be passed in query string with request message",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization token need to be added into HTTP request header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200",
-            "schema": {
-              "$ref": "#/definitions/findallusersresponse"
+
+            .hero-panel--content .short-title{
+                padding-top: 10px;
             }
-          },
-          "202": {
-            "description": "success"
-          },
-          "400": {
-            "description": "Bad request. User not found/Tenant id missing/No matching user found"
-          },
-          "401": {
-            "description": "Your access token has expired. Please renew it before submitting the request or Authentication_MissingOrMalformed /No matching user found/Invalid domain name in the request url/Your access token has expired. Please renew it before submitting the request."
-          },
-          "403": {
-            "description": "The token contains invalid or unsupported claims. Get the request token again and then retry the request."
-          },
-          "404": {
-            "description": "Resource  does not exist or one of its queried reference-property objects are not present or Invalid request."
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
-        }
-      }
-    },
-    "/v1/identity/{resource}/login": {
-      "post": {
-        "tags": [
-          "resource"
-        ],
-        "operationId": "signin",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "resource",
-            "in": "path",
-            "description": "resource name need to be passed as template parameter in request uri",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "req",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/signinrequest"
+            .hero-panel--content .hero-panel--title{
+                line-height: 20px;
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200",
-            "schema": {
-              "type": "string"
+            #container{
+                margin-top: 50px;
             }
-          },
-          "400": {
-            "description": "Bad request. Please fix the request before retrying."
-          },
-          "404": {
-            "description": "Resource does not exist or one of its queried reference-property objects are not present or Invalid request."
-          },
-          "500": {
-            "description": "Internal server error while processing the request."
-          }
+            .hero-panel--list-content {
+                min-height: 3rem;
+            }
         }
-      }
-    }
-  },
-  "definitions": {
-    "modifyrequest": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/UserDetails"
-        },
-        "extensionProperties": {
-          "$ref": "#/definitions/ExtensionProperties"
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .hero-panel--list-content {
+                min-height: 6rem;
+            }
+            .hero-panel .short-title{
+                padding-top: 30px;
+            }
+            #container{
+                margin-top: 50px;
+            }
         }
-      }
-    },
-    "UserDetails": {
-      "type": "object",
-      "properties": {
-        "UserPrincipalName": {
-          "type": "string"
-        },
-        "AccountEnabled": {
-          "type": "boolean"
-        },
-        "City": {
-          "type": "string"
-        },
-        "Country": {
-          "type": "string"
-        },
-        "Department": {
-          "type": "string"
-        },
-        "FacsimileTelephoneNumber": {
-          "type": "string"
-        },
-        "GivenName": {
-          "type": "string"
-        },
-        "JobTitle": {
-          "type": "string"
-        },
-        "Mobile": {
-          "type": "string"
-        },
-        "PhysicalDeliveryOfficeName": {
-          "type": "string"
-        },
-        "PostalCode": {
-          "type": "string"
-        },
-        "PreferredLanguage": {
-          "type": "string"
-        },
-        "State": {
-          "type": "string"
-        },
-        "StreetAddress": {
-          "type": "string"
-        },
-        "Surname": {
-          "type": "string"
-        },
-        "TelephoneNumber": {
-          "type": "string"
-        },
-        "CreationType": {
-          "type": "string"
-        },
-        "DisplayName": {
-          "type": "string"
-        },
-        "mailnickName": {
-          "type": "string"
-        },
-        "PasswordProfile": {
-          "$ref": "#/definitions/PasswordProfile"
-        },
-        "SignInNames": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SignInName"
-          }
-        }
-      }
-    },
-    "ExtensionProperties": {
-      "type": "object",
-      "properties": {
-        "extension_12848820100c4418925c0ff03b559194_partnerId": {
-          "type": "string"
-        },
-        "extension_12848820100c4418925c0ff03b559194_bookingSystemId": {
-          "type": "string"
-        },
-        "extension_12848820100c4418925c0ff03b559194_bookingSystemBillingId": {
-          "type": "string"
-        },
-        "extension_12848820100c4418925c0ff03b559194_userType": {
-          "type": "string"
-        },
-        "extension_12848820100c4418925c0ff03b559194_agentID": {
-          "type": "string"
-        }
-      }
-    },
-    "PasswordProfile": {
-      "type": "object",
-      "properties": {
-        "Password": {
-          "type": "string"
-        },
-        "ForceChangePasswordNextLogin": {
-          "type": "boolean"
-        },
-        "EnforceChangePasswordPolicy": {
-          "type": "boolean"
-        }
-      }
-    },
-    "SignInName": {
-      "type": "object",
-      "properties": {
-        "Type": {
-          "type": "string"
-        },
-        "Value": {
-          "type": "string"
-        }
-      }
-    },
-    "findallusersresponse": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/UserDetails"
-        },
-        "extensions": {
-          "$ref": "#/definitions/ExtensionProperties"
-        }
-      }
-    },
-    "AssignedLicense": {
-      "type": "object",
-      "properties": {
-        "DisabledPlans": {
-          "type": "array",
-          "items": {
-            "format": "uuid",
-            "type": "string",
-            "example": "00000000-0000-0000-0000-000000000000"
-          }
-        },
-        "SkuId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        }
-      }
-    },
-    "AssignedPlan": {
-      "type": "object",
-      "properties": {
-        "AssignedTimestamp": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "CapabilityStatus": {
-          "type": "string"
-        },
-        "Service": {
-          "type": "string"
-        },
-        "ServicePlanId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        }
-      }
-    },
-    "ProvisionedPlan": {
-      "type": "object",
-      "properties": {
-        "CapabilityStatus": {
-          "type": "string"
-        },
-        "ProvisioningStatus": {
-          "type": "string"
-        },
-        "Service": {
-          "type": "string"
-        }
-      }
-    },
-    "ProvisioningError": {
-      "type": "object",
-      "properties": {
-        "ErrorDetail": {
-          "type": "string"
-        },
-        "Resolved": {
-          "type": "boolean"
-        },
-        "Service": {
-          "type": "string"
-        },
-        "Timestamp": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "AppRoleAssignment": {
-      "type": "object",
-      "properties": {
-        "CreationTimestamp": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "Id": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "PrincipalDisplayName": {
-          "type": "string"
-        },
-        "PrincipalId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "PrincipalType": {
-          "type": "string"
-        },
-        "ResourceDisplayName": {
-          "type": "string"
-        },
-        "ResourceId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "ObjectType": {
-          "type": "string"
-        },
-        "ObjectId": {
-          "type": "string"
-        },
-        "DeletionTimestamp": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "LicenseDetail": {
-      "type": "object",
-      "properties": {
-        "ObjectId": {
-          "type": "string"
-        },
-        "ServicePlans": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServicePlanInfo"
-          }
-        },
-        "SkuId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "SkuPartNumber": {
-          "type": "string"
-        }
-      }
-    },
-    "OAuth2PermissionGrant": {
-      "type": "object",
-      "properties": {
-        "ClientId": {
-          "type": "string"
-        },
-        "ConsentType": {
-          "type": "string"
-        },
-        "ExpiryTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "ObjectId": {
-          "type": "string"
-        },
-        "PrincipalId": {
-          "type": "string"
-        },
-        "ResourceId": {
-          "type": "string"
-        },
-        "Scope": {
-          "type": "string"
-        },
-        "StartTime": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "DirectoryObject": {
-      "type": "object",
-      "properties": {
-        "ObjectType": {
-          "type": "string"
-        },
-        "ObjectId": {
-          "type": "string"
-        },
-        "DeletionTimestamp": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "ServicePlanInfo": {
-      "type": "object",
-      "properties": {
-        "ServicePlanId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "ServicePlanName": {
-          "type": "string"
-        },
-        "ProvisioningStatus": {
-          "type": "string"
-        },
-        "AppliesTo": {
-          "type": "string"
-        }
-      }
-    },
-    "GetUserListRequest": {
-      "type": "object",
-      "properties": {
-        "tenant": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        }
-      }
-    },
-    "adduserrequest": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/UserDetails"
-        },
-        "extensionProperties": {
-          "$ref": "#/definitions/ExtensionProperties"
-        }
-      }
-    },
-    "signinrequest": {
-      "type": "object",
-      "properties": {
-        "ClientId": {
-          "type": "string"
-        },
-        "ClientSecret": {
-          "type": "string"
-        },
-        "tokenurl": {
-          "type": "string"
-        }
-      }
-    },
-    "modifypasswordrequest": {
-      "type": "object",
-      "properties": {
-        "oldPaswd": {
-          "type": "string"
-        },
-        "newPaswd": {
-          "type": "string"
-        }
-      }
-    },
-    "addusertogrouprequest": {
-      "type": "object",
-      "properties": {
-        "signInName": {
-          "type": "string"
-        }
-      }
-    },
-    "GetUserGroupsRequest": {
-      "type": "object",
-      "properties": {
-        "signinname": {
-          "type": "string"
-        },
-        "tenant": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        }
-      }
-    },
-    "Group": {
-      "type": "object",
-      "properties": {
-        "Description": {
-          "type": "string"
-        },
-        "DirSyncEnabled": {
-          "type": "boolean"
-        },
-        "DisplayName": {
-          "type": "string"
-        },
-        "LastDirSyncTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "Mail": {
-          "type": "string"
-        },
-        "MailNickname": {
-          "type": "string"
-        },
-        "MailEnabled": {
-          "type": "boolean"
-        },
-        "OnPremisesSecurityIdentifier": {
-          "type": "string"
-        },
-        "ProvisioningErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ProvisioningError"
-          }
-        },
-        "ProxyAddresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "SecurityEnabled": {
-          "type": "boolean"
-        },
-        "AppRoleAssignments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AppRoleAssignment"
-          }
-        },
-        "ObjectType": {
-          "type": "string"
-        },
-        "ObjectId": {
-          "type": "string"
-        },
-        "DeletionTimestamp": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    }
-  }
-}
+    </style>
+<style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("https://sxt.cdn.skype.com/assets/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("https://sxt.cdn.skype.com/assets/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("https://sxt.cdn.skype.com/assets/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("https://sxt.cdn.skype.com/assets/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style></head>
+
+<body>
+    <section id="hero-panel">
+        <div data-reactroot="" data-c-render="universal" class="hero-panel component"><div class="hero-panel--content"><div class="w--content"><p class="short-title">welcome to farah experiences</p><h2 class="hero-panel--title">Please <strong>Log in</strong></h2><!-- react-empty: 6 --></div></div><div class="hero-panel--list-content"><span class="svgCurve"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 138" class="inline-svg" preserveAspectRatio="xMinYMin slice"><g><defs><lineargradient x1="0%" x2="100%" id="featureCurve"><stop offset="0%" id="FeatureListCurveLeft"></stop><stop offset="100%" id="FeatureListCurveRight"></stop></lineargradient></defs><path fill="url(#featureCurve)" d="M0 0h1365.96l-.042 35.91C1163.482 103.97 936.154 138 683.936 138 431.716 138 203.738 104 0 36V0z"></path></g></svg></span><div class="w--content"><ul class="list-wrapper"></ul></div></div><div class="w--content"></div></div></section>
+    <section id="container">
+          <div id="api"></div>  
+          <!-- below is layout provided by Azure AD Website guide to style the form -->
+          <!-- <div id="api" class="login">
+            <div class="localAccount" role="form">
+                <div class="intro">
+                        <h2>Sign in with your existing account</h2>
+                </div>
+                <div class="error pageLevel" aria-hidden="true" style="display: none;">
+                        <p role="alert"></p>
+                </div>
+                <div class="entry">
+                        <div class="entry-item">
+                                <label for="logonIdentifier">Email Address</label> 
+                                <div class="error itemLevel" aria-hidden="true" style="display: none;">
+                                        <p role="alert"></p>
+                                </div>
+                                <input type="email" id="logonIdentifier" name="LogonIdentifier" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="LogonIdentifier" value="" tabindex="1">
+                        </div>
+                        <div class="entry-item">
+                                <div class="password-label"> <label for="password">Password</label><a id="forgotPassword" tabindex="2">Forgot your password?</a></div>
+                                <div class="error itemLevel" aria-hidden="true" style="display: none;">
+                                        <p role="alert"></p>
+                                </div>
+                                <input type="password" id="password" name="Password" placeholder="Password" tabindex="1">
+                        </div>
+                        <div class="working"></div>
+                        <div class="buttons"> <button id="next" tabindex="1">Sign in</button> </div>
+                </div>
+                <div class="divider">
+                        <h2>OR</h2>
+                </div>
+                <div class="create">
+                        <p>Don't have an account?<a id="createAccount" tabindex="1">Sign up now</a> </p>
+                </div>
+            </div>
+        </div>   -->
+    </section>
+
+
+<object id="__symantecPKIClientMessenger" data-supports-flavor-configuration="true" data-extension-version="0.5.0.109" style="display: none;"></object><span id="__symantecPKIClientDetector" style="display: none;">__PRESENT</span></body></html>
