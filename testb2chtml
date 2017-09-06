@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0062)https://fe-newdev-ux-scep-8d56-cd.azurewebsites.net/Login.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+     
+<META charset="utf-8">     
+<META http-equiv="X-UA-Compatible" content="IE=edge">     
+<META name="description" content="">     
+<META name="viewport" content="width=device-width, initial-scale=1.0">     
+<TITLE>Miral</TITLE>     
+<STYLE>
+        h1{
+            text-align: center;
+        }
+        .hero-panel--content{
+            padding-top: 20px;
+            height: 100px;
+            background-color: #4b11ea;
+            background: -webkit-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: -o-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: -moz-linear-gradient(90deg, #09ADEB, #540C7A 100%);
+            background: linear-gradient(90deg, #09ADEB, #540C7A 100%); 
+        }
+        #FeatureListCurveLeft{
+            stop-color: #09ADEB;
+        }
+        #FeatureListCurveRight{
+            stop-color: #540C7A;
+        }
+
+        .hero-panel--title{
+            line-height: 35px;
+        }
+        .w--content .short-title{
+            font-size: 13px;
+        }
+        .hero-panel--list-content{
+            margin-top: -20px;
+        } 
+        .login{
+            width: 40%;
+            margin: 0 auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .login label, .login .intro, .login .divider{
+            display: none;
+        }
+        .login input{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            border-radius: 4px;
+        }
+
+        .entry-item:nth-child(2){
+            display: -webkit-box;      
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+
+            flex-direction: column;
+        }
+        .entry-item:nth-child(2) input{
+            -webkit-box-ordinal-group: 2;
+            -moz-box-ordinal-group: 2;
+            -ms-flex-order: 2;
+            -webkit-order: 2; 
+            order: 2;
+        }
+
+        .entry-item:nth-child(2) .error{
+            -webkit-box-ordinal-group: 1;
+            -moz-box-ordinal-group: 1;
+            -ms-flex-order: 1;
+            -webkit-order: 1; 
+            order: 1;
+        }
+
+        .login button{  
+            display: block;
+            background-color: #ED1652; 
+            border: none;
+            color: white;
+            padding: 10px 42px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight:bold;
+            margin: 30px auto;
+            cursor: pointer;
+            border-radius: 25px;
+            letter-spacing: 1px;
+        }
+        .login button:hover{
+            background-color: #a52ba5;
+        }
+        .login .password-label{
+            -webkit-box-ordinal-group: 3;
+            -moz-box-ordinal-group: 3;
+            -ms-flex-order: 3;
+            -webkit-order: 3; 
+            order: 3;
+        }
+        .login #forgotPassword{
+            display: block;
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #828282;
+            text-decoration: underline;
+            word-spacing: 3px;
+        }
+        .login .create, .login .create a{
+            text-align: center;
+            color: #828282;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .login .create a{
+            text-decoration: underline;
+            padding-left: 2px;
+        }
+        
+        @media only screen and (max-width: 479px) {
+            .login{
+                width: 80%;
+            }
+            .login #forgotPassword{
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-panel--content .short-title{
+                padding-top: 10px;
+            }
+            .hero-panel--content .hero-panel--title{
+                line-height: 20px;
+            }
+            #container{
+                margin-top: 40px;
+            }
+        }
+        @media only screen and (min-width: 480px) and (max-width: 767px) {
+            .login{
+                width: 80%;
+            }
+            .login #forgotPassword{
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-panel--content .short-title{
+                padding-top: 10px;
+            }
+            .hero-panel--content .hero-panel--title{
+                line-height: 20px;
+            }
+            #container{
+                margin-top: 50px;
+            }
+            .hero-panel--list-content {
+                min-height: 3rem;
+            }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .hero-panel--list-content {
+                min-height: 6rem;
+            }
+            .hero-panel .short-title{
+                padding-top: 30px;
+            }
+            #container{
+                margin-top: 50px;
+            }
+        }
+    </STYLE>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18763"></HEAD> 
+<BODY>
+<H1>HEADER</H1>
+<div id="api"></div></BODY></HTML>
