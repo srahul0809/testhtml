@@ -1,17 +1,21 @@
-<!DOCTYPE HTML>
-<!-- saved from url=(0062)https://fe-newdev-ux-scep-8d56-cd.azurewebsites.net/Login.html -->
-<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
-http-equiv="X-UA-Compatible">
-     
-<META charset="utf-8">     
-<META http-equiv="X-UA-Compatible" content="IE=edge">     
-<META name="description" content="">     
-<META name="viewport" content="width=device-width, initial-scale=1.0">     
-<TITLE>Miral</TITLE>     
-<STYLE>
-        h1{
-            text-align: center;
-        }
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miral Hero Panel Component</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">  
+    <link href="https://fe-newdev-ux-scep-8d56-cm.azurewebsites.net/platform-dist/css/main.css" rel="stylesheet">
+    <link href="https://fe-newdev-ux-scep-8d56-cm.azurewebsites.net/b2b-dist/css/b2b.css" rel="stylesheet">
+    <style>
         .hero-panel--content{
             padding-top: 20px;
             height: 100px;
@@ -180,9 +184,50 @@ http-equiv="X-UA-Compatible">
                 margin-top: 50px;
             }
         }
-    </STYLE>
- 
-<META name="GENERATOR" content="MSHTML 11.00.9600.18763"></HEAD> 
-<BODY>
-<H1>HEADER</H1>
-<div id="api" class="login"></div></BODY></HTML>
+    </style>
+</head>
+
+<body>
+    <section id="hero-panel">
+        <div data-reactroot="" data-c-render="universal" class="hero-panel component"><div class="hero-panel--content"><div class="w--content"><p class="short-title">welcome to farah experiences</p><h2 class="hero-panel--title">Please <strong>Log in</strong></h2><!-- react-empty: 6 --></div></div><div class="hero-panel--list-content"><span class="svgCurve"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 138" class="inline-svg" preserveAspectRatio="xMinYMin slice"><g><defs><linearGradient x1="0%" x2="100%" id="featureCurve"><stop offset="0%" id="FeatureListCurveLeft"></stop><stop offset="100%" id="FeatureListCurveRight"></stop></linearGradient></defs><path fill="url(#featureCurve)" d="M0 0h1365.96l-.042 35.91C1163.482 103.97 936.154 138 683.936 138 431.716 138 203.738 104 0 36V0z"></path></g></svg></span><div class="w--content"><ul class="list-wrapper"></ul></div></div><div class="w--content"></div></div></section>
+    <section id="container">
+          <div id="api" class="login"></div>  
+          <!-- below is layout provided by Azure AD Website guide to style the form -->
+          <!-- <div id="api" class="login">
+            <div class="localAccount" role="form">
+                <div class="intro">
+                        <h2>Sign in with your existing account</h2>
+                </div>
+                <div class="error pageLevel" aria-hidden="true" style="display: none;">
+                        <p role="alert"></p>
+                </div>
+                <div class="entry">
+                        <div class="entry-item">
+                                <label for="logonIdentifier">Email Address</label> 
+                                <div class="error itemLevel" aria-hidden="true" style="display: none;">
+                                        <p role="alert"></p>
+                                </div>
+                                <input type="email" id="logonIdentifier" name="LogonIdentifier" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="LogonIdentifier" value="" tabindex="1">
+                        </div>
+                        <div class="entry-item">
+                                <div class="password-label"> <label for="password">Password</label><a id="forgotPassword" tabindex="2">Forgot your password?</a></div>
+                                <div class="error itemLevel" aria-hidden="true" style="display: none;">
+                                        <p role="alert"></p>
+                                </div>
+                                <input type="password" id="password" name="Password" placeholder="Password" tabindex="1">
+                        </div>
+                        <div class="working"></div>
+                        <div class="buttons"> <button id="next" tabindex="1">Sign in</button> </div>
+                </div>
+                <div class="divider">
+                        <h2>OR</h2>
+                </div>
+                <div class="create">
+                        <p>Don't have an account?<a id="createAccount" tabindex="1">Sign up now</a> </p>
+                </div>
+            </div>
+        </div>   -->
+    </section>
+</body>
+
+</html>
